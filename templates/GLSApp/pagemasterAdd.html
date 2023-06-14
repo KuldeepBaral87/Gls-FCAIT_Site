@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'GLSApp/navbar.html' %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Page Master</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/tabless.css' %}">
+    <style>
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="table-container">
+        <form action="{% url 'pagemasterAdd' %}" method="post">
+        <table>
+            {% csrf_token %}
+            <tr>
+                <td colspan="2"><h2>Add Page Items</h2></td>
+            </tr>
+            <tr>
+                <td><label>Enter Page Name:</label></td>
+                <td><input type="text" name="pageName" required/></td>
+            </tr>
+            <tr>
+                <td><label>Enter Page Content:</label></td>
+                <td>
+                    <textarea name="pageContent" rows="5" cols="30"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Choose a Course:</td>
+                <td>
+                    <select name="courseId">
+                        <option value="select">----Select-----</option>
+                        {% for item in course %}
+                            <option value="{{item.courseId}}">{{item.courseName}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="submit"/>
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div> 
+</div>
+</body>
+</html>

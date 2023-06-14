@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Document</title> -->
+    <style>
+        nav{
+        list-style-type: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background-color:#073881 !important;
+        justify-content: initial !important;
+      }
+      nav li{
+        text-align: center !important;
+        font-size: 20px !important;
+        margin: 5px !important;
+        float: left !important;
+      }
+      nav li a{
+        display: block !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 14px 16px !important;
+        text-decoration: none !important;
+      }
+      nav li a:hover{
+        background-color: white !important;
+        color:#073881 !important;
+        border-radius: 2px !important;
+      }
+      /* nav li a:hover:not(.active) {
+        background-color:#073881;
+      } */
+      nav li a:active{
+        background-color: white !important;
+        color:#073881 !important;
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <li><a href="{% url 'displaymenu' %}">Admin</a></li>
+        <li><a href="{% url 'menumaster' %}">Menus</a></li>
+        <li><a href="{% url 'submenumaster' %}">Sub-Menu</a></li>
+        <li><a href="{% url 'pagemaster' %}">Pages</a></li>
+        <li><a href="{% url 'coursemaster' %}">Courses</a></li>
+        <li><a href="{% url 'activitytype' %}">Activities</a></li>
+    </nav> 
+</body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+    {% include 'GLSApp/navbar.html' %}
+<head>
+    <title>Edit Activity</title>
+    {% load static %}
+     <link rel="stylesheet" type="text/css" href="{% static '/css/tabless.css' %}">
+</head>
+ 
+<body>
+  
+    <div class="container">
+        <div class="table-container">
+            <table >        
+                <tbody>
+                    <form action="{% url 'activityUpdate' activity_object.activityId %}" method="POST">       
+                        {% csrf_token %}
+                        <tr>
+                            <td colspan="2"><h1>EDIT ACTIVITY INFORMATION</h1></td>
+                        </tr>
+                        <tr>
+                            <td>ACTIVITY ID</td>
+                            <td><label for="activityId">{{ activity_object.activityId }}</label><br></td>
+                        </tr>
+                        <tr>
+                            <td>ACTIVITY NAME</td>
+                            <td><input type="text" name="activityName"  value="{{ activity_object.activityName }}"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="submit" value="submit"/></td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+ 
+</html>

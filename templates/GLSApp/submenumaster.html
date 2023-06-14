@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'GLSApp/navbar.html' %}
+<head>
+    <title>Sub Menu</title>
+    {% load static %}
+     <link rel="stylesheet" type="text/css" href="{% static '/css/MainDashboard.css' %}">
+     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <style>
+    th, td {
+      text-align: left;
+    }
+    table, th, td {
+      /* border: 1px solid #073881; */
+      padding: 8px;
+    }
+    td,th{
+      border: 1px solid white;
+    }
+    th {
+      background-color: #073881 !important;
+      color: white !important; 
+    }
+    </style>
+</head>
+<body>
+    <br>
+  <h1 style="text-align: center;">Sub Menu Information</h1>
+  <br>
+   <a href="{% url 'submenumasterSave' %}" class="add-menu-button">Add Sub Menu</a><br>
+ 
+  <table class="table table-striped " id="dtBasicExample">
+    <thead>
+      <tr>
+        <!-- <th> SUB MENU ID </th> -->
+        <th> MENU ID </th>
+        <th> MENU TITLE </th>
+        <th> MENU SEQUENCE </th>
+        <th> PAGE ID </th>
+        <th> EDIT </th>
+        <th> DELETE </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for items in sub_items %}
+      <tr>
+          <!-- <td>{{items.subMenuId}}</td> -->
+          <td>{{items.menuid}}</td>
+          <td>{{items.menuTitle}}</td>
+          <td>{{items.menuSequence}}</td>
+          <td>{{items.pageId}}</td>
+          <td style="padding:10px;"><a href="{% url 'submenumasterEdit' items.subMenuId %}"  class="edit-link">Edit</a></td>
+          <td style="padding:10px;"><a href="{% url 'submenumasterDelete' items.subMenuId %}"  class="delete-link">Delete</a></td>
+      </tr>
+       {% endfor %}
+    </tbody>
+  </table>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#dtBasicExample').DataTable({
+          "paging":false
+        });
+      });
+    </script>
+</body>
+</html>

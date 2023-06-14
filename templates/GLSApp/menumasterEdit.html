@@ -1,0 +1,61 @@
+<html>
+    {% include 'GLSApp/navbar.html' %}
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/tabless.css' %}">
+    <script  src="htpps:/code.jquery.com/jquery-1.11.3.min.js"></script>
+    <title>C.R.U.D</title>
+    <style>
+        /* table{
+            background-color:wheat;
+            width: 1000px;
+            height: 200px;
+            font-size:20px;
+            align-content: center;
+        }
+        h1{
+            padding-top: 30px;
+            padding-bottom: 30px;
+             text-align: left;   
+        } */
+    </style>
+</head>
+ 
+<body>
+    
+    <div class="container">
+   <div id="adminDashboard"></div>
+    <div class="table-container">
+
+        <table > 
+            <tr>
+                <td colspan="2" ><h1>EDIT MENU MASTER INFORMATION</h1></td>
+            </tr>       
+            <tbody>
+                <form action="{% url 'menumasterUpdate' object.menuid %}" method="POST">       
+                    {% csrf_token %}
+                    <tr>
+                        <td>MENU ID</td>
+                        <td><label for="menuid">{{object.menuid}}</label><br></td>
+                    </tr>
+                    <tr>
+                        <td>MENU TITLE</td>
+                        <td><input type="text" name="menutitle"  value="{{object.menutitle}}"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="submit"/></td>
+                    </tr>
+                </form>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+<script>
+    $(function() {
+        $("#adminDashboard").load("adminDashboard.html");
+    });
+</script>
+</body>
+ 
+</html>

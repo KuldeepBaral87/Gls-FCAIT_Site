@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'GLSApp/navbar.html' %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/tabless.css' %}">
+    <title>Add Menu</title>
+</head>
+<body>
+    <div class="container">
+        <div class="table-container">
+            <table>
+                <tbody>
+                    <form action="{% url 'menumasterAdd' %}" method="post">        
+                        {% csrf_token %}
+                        <tr>
+                            <td colspan="2"><h2>Add Menu Items</h2></td>
+                        </tr>
+                        <tr>
+                            <td><label>Enter Menu Title:</label></td>
+                            <td><input type="text" name="menutitle" required/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="submit"/>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

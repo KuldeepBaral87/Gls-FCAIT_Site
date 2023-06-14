@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'GLSApp/navbar.html' %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Sub Menu</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/tabless.css' %}">
+    <style>
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="table-container">
+        <form action="{% url 'submenumasterAdd' %}" method="post">
+        <table>
+            {% csrf_token %}
+            <tr>
+                <td colspan="2"><h2>Add Sub Menu Items</h2></td>
+            </tr>
+            <tr>
+                <td><label>Choose a Menu:</label></td>
+                <td>
+                    <select name="menuid">
+                        <option value="select">----Select-----</option>
+                        <!-- <option value="1">1</option> -->
+                        {% for items in menu_items %}
+                            <option value="{{items.menuid}}">{{items.menutitle}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Enter Sub Menu Title:</label></td>
+                <td><input type="text" name="menuTitle" required/></td>
+            </tr>
+            <tr>
+                <td><label>Enter Sub Menu Sequence:</label></td>
+                <td><input type="number" name="menuSequence" required/></td>
+            </tr>
+            <tr>
+                <td>Choose a Page:</td>
+                <td>
+                    <select name="pageId">
+                        <option value="select">----Select-----</option>
+                        {% for item in page_items %}
+                            <option value="{{item.pageId}}">{{item.pageName}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="submit"/>
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+   </div>
+</body>
+</html>
